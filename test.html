@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<title>—крипт</title>
+		<script>
+			var p1 = '0';
+			var tp = '';
+			var p2 = '0';
+			function cle() {
+				p1 = '0';
+				tp = '';
+				p2 = '0';
+				numb(0);
+
+			}
+			function numb(num) {
+				if (Number(p1) == 0) {
+					p1 = num;
+					document.getElementById('text1').value = p1;
+				} else if ((Number(p1) > 0) && (tp == '')) {
+					p1 = p1 + num;
+					document.getElementById('text1').value = p1;
+				} else if (Number(p2) == 0 && tp != '') {
+					p2 = num;
+					document.getElementById('text1').value = p2;
+				} else if (Number(p2) > 0 && tp != '') {
+					p2 = p2 + num;
+					document.getElementById('text1').value = p2;
+				}
+			}
+			function operation(op) {
+				if (p1 == '0' && p2 == '0' && tp == '' && Number(document.getElementById('text1').value) > 0) {
+					p1 = document.getElementById('text1').value
+				}
+				tp = op;
+			}
+			function ravn() {
+				if (tp != '') {
+					if (tp == '+') {
+						document.getElementById('text1').value = Number(p1) + Number(p2);
+					}
+					if (tp == '-') {
+						document.getElementById('text1').value = Number(p1) - Number(p2);
+					}
+					if (tp == '*') {
+						document.getElementById('text1').value = Number(p1) * Number(p2);
+					}
+					if (tp == '/') {
+						if (Number(p2) == 0) {
+							alert('Ќ≈Ћ№«я делить на 0');
+						} else {
+							document.getElementById('text1').value = Number(p1) / Number(p2);
+						}
+					}
+				} else {
+					alert('—начала задайте операцию');
+				}
+				p1 = '0';
+				tp = '';
+				p2 = '0';
+			}
+		</script>
+		<style>
+			input#text1 {
+				width: 135px;
+				border: 4px solid cyan;
+				margin-bottom: 10px;
+			}
+			input.btn1 {
+				width: 30px;
+				height: 30px;
+				border: 2px solid red;
+			}
+			input.btn2 {
+				width: 30px;
+				height: 30px;
+				border: 2px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<input id="text1" type="text" value="0" />
+		<br />
+		<input class="btn1" value="1" type="button" onclick="numb('1');"/>
+		<input class="btn1" value="2" type="button" onclick="numb('2');"/>
+		<input class="btn1" value="3" type="button" onclick="numb('3');"/>
+		<input class="btn2" value="+" type="button" onclick="operation('+');"/>
+		<br />
+		<input class="btn1" value="4" type="button" onclick="numb('4');"/>
+		<input class="btn1" value="5" type="button" onclick="numb('5');"/>
+		<input class="btn1" value="6" type="button" onclick="numb('6');"/>
+		<input class="btn2" value="-" type="button" onclick="operation('-');"/>
+		<br />
+		<input class="btn1" value="7" type="button" onclick="numb('7');"/>
+		<input class="btn1" value="8" type="button" onclick="numb('8');"/>
+		<input class="btn1" value="9" type="button" onclick="numb('9');"/>
+		<input class="btn2" value="*" type="button" onclick="operation('*');"/>
+		<br />
+		<input class="btn1" value="0" type="button" onclick="numb('0');"/>
+		<input class="btn2" value="AC" type="button" onclick="cle();"/>
+		<input class="btn2" value="=" type="button" onclick="ravn();"/>
+		<input class="btn2" value="/" type="button" onclick="operation('/');"/>
+	</body>
+</html>
